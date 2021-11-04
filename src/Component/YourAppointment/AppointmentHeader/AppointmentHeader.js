@@ -5,7 +5,7 @@ import Calander from '../../Calander/Calander';
 
 const AppointmentHeader = ({date, setDate}) => {
     return (
-        <Container>
+        <Container sx={{my:5}}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
                     <Calander date={date} setDate={setDate}></Calander>
