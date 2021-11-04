@@ -33,7 +33,7 @@ const Services = () => {
                 <Typography sx={{textAlign:"center"}} variant="h6" component="div">
                      OUR SERVICES 
                 </Typography>
-                <Typography sx={{textAlign:"center", fontWeight:"bold"}} variant="h3" component="div">
+                <Typography sx={{textAlign:"center", fontWeight:"bold", my: 5}} variant="h3" component="div">
                      Services We Provided
                 </Typography>
                 <Grid container spacing={2}>

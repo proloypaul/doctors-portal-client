@@ -1,9 +1,10 @@
 import { Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import BookingModal from '../../BookingModal/BookingModal';
+
 
 
 
@@ -46,6 +47,14 @@ const AvailableAppointment = ({date}) => {
             space: 10
         }
     ]
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    
     return (
         <Container sx={{my:10}}>
             <Typography variant="h3" component="div">
@@ -63,17 +72,19 @@ const AvailableAppointment = ({date}) => {
                                     </Typography>
                                     <Typography variant="p">
                                         {time.space} SPACES AVAILABLE 
-                                    </Typography><br/>
-                                    <Button variant="contained">Book Appointment</Button>
+                                    </Typography>
+                                    <br/>
+                                    <Button onClick={handleOpen} variant="contained">Book Appointment</Button>
+                                    <BookingModal handleClose={handleClose} open={open} sendBookingDtl={time}></BookingModal>
                                 </CardContent>
                             </Card>
                         </Grid>)
+                        
                 }
             </Grid>
 
-
-        </Container>
         
+        </Container>
 
     );
 };

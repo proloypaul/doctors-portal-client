@@ -7,7 +7,7 @@ const Banner = () => {
         weight: "300px"
     }
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, my: 10 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} style={{display: "flex", alignItems:"center"}}>
                     <div>
