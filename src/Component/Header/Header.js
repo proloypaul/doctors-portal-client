@@ -5,11 +5,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import UseFirebase from '../../Hooks/UseFirebase';
+
 // import MenuIcon from '@mui/icons-material/Menu';
 
 
 const Header = () => {
+    const {user, logOutProces} = UseFirebase()
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -26,8 +29,9 @@ const Header = () => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 News
                 </Typography>
-                <Link to="/yourAppointment" sx={{textDecoration: 'none', color: "white"}}><Button color="inherit">Appointment</Button></Link>
-                <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" >Login</Button></NavLink>
+                <NavLink to="/home">Home</NavLink>
+                <NavLink to="/yourAppointment" sx={{textDecoration: 'none', color: "white"}}><Button color="inherit">Appointment</Button></NavLink>
+                {user?.email ? <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" onClick={logOutProces} >LogOut</Button></NavLink> : <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" >LogIn</Button></NavLink>}
                 
             </Toolbar>
             </AppBar>

@@ -45,7 +45,7 @@ const Banner = () => {
                 <Container sx={{mt:-10}}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} md={4} sx={{ padding:'20px 10px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
-                            <Typography variant="p" component="div" sx={{fontSize: 50}}><i  class="far fa-clock"></i></Typography>
+                            <Typography variant="p" component="div" sx={{fontSize: 50}}><i  className="far fa-clock"></i></Typography>
                             <Typography variant="p" component="div" sx={{marginLeft: '10px'}}>
                                 <Typography variant="h6" component="div">
                                     Opening Here
@@ -56,7 +56,7 @@ const Banner = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{ padding:'20px 10px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
-                            <Typography variant="p" component="div" sx={{fontSize: 50}}><i class="fas fa-map-marker-alt"></i></Typography>
+                            <Typography variant="p" component="div" sx={{fontSize: 50}}><i className="fas fa-map-marker-alt"></i></Typography>
                             <Typography variant="p" component="div" sx={{marginLeft: '10px'}}>
                                 <Typography variant="h6" component="div">
                                     Opening Here
@@ -67,7 +67,7 @@ const Banner = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={4} sx={{ padding:'20px 10px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
-                            <Typography variant="p" component="div" sx={{fontSize: 50}}><i class="fas fa-phone-alt"></i></Typography>
+                            <Typography variant="p" component="div" sx={{fontSize: 50}}><i className="fas fa-phone-alt"></i></Typography>
                             <Typography variant="p" component="div" sx={{marginLeft: '10px'}}>
                                 <Typography variant="h6" component="div">
                                     Opening Here
