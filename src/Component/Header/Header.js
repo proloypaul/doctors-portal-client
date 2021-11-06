@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../Context/useAuth';
-import { fontWeight } from '@mui/system';
 
 // import MenuIcon from '@mui/icons-material/Menu';
 

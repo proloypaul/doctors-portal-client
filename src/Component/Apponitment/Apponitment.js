@@ -7,7 +7,7 @@ import ApponitmentBg from '../../images/appointment-bg.png'
 
 const appointmentBanner = {
     background: `url(${ApponitmentBg})`,
-    backgroundColor: 'rgba(179, 157, 153, 0.8)',
+    backgroundColor: 'rgb(43, 69, 80, 0.9)',
     backgroundBlendMode: 'darken'
 }
 const Apponitment = () => {

@@ -7,11 +7,11 @@ import bannerBg from '../../images/chair.png'
 
 const bannerBgAdded = {
     background: `url(${bannerBg})`,
-    backgroundColor: 'rgb(43, 69, 80, 0.5)',
+    backgroundColor: 'rgb(43, 69, 80, 0.6)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: "cover",
     backgroundBlendMode: 'darken, luminosity',   
-    height: '400px',
+    height: '500px',
     display: "flex",
     alignItems: 'center'
 }
@@ -42,7 +42,7 @@ const Banner = () => {
                 </Container>
             </Box>
             <Box>
-                <Container sx={{mt:-10}}>
+                <Container sx={{mt:-5}}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} md={4} sx={{ padding:'20px 5px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
                             <Typography variant="p" component="div" sx={{fontSize: 50}}><i  className="far fa-clock"></i></Typography>
