@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 // import MenuIcon from '@mui/icons-material/Menu';
 
 
@@ -26,8 +26,9 @@ const Header = () => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 News
                 </Typography>
-                <Link to="/yourAppointment"><Button color="inherit">Appointment</Button></Link>
-                <Button color="inherit">Login</Button>
+                <Link to="/yourAppointment" sx={{textDecoration: 'none', color: "white"}}><Button color="inherit">Appointment</Button></Link>
+                <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" >Login</Button></NavLink>
+                
             </Toolbar>
             </AppBar>
       </Box>
