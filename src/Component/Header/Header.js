@@ -6,13 +6,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { NavLink } from 'react-router-dom';
-import UseFirebase from '../../Hooks/UseFirebase';
+import useAuth from '../../Context/useAuth';
+import { fontWeight } from '@mui/system';
 
 // import MenuIcon from '@mui/icons-material/Menu';
 
 
 const Header = () => {
-    const {user, logOutProces} = UseFirebase()
+    const {user, logOutProces} = useAuth()
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -29,10 +30,10 @@ const Header = () => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 News
                 </Typography>
-                <NavLink to="/home">Home</NavLink>
-                <NavLink to="/yourAppointment" sx={{textDecoration: 'none', color: "white"}}><Button color="inherit">Appointment</Button></NavLink>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-                {user?.email ? <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" onClick={logOutProces} >LogOut</Button></NavLink> : <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" >LogIn</Button></NavLink>}
+                <NavLink to="/home" style={{textDecoration:'none', color: 'white', fontWeight: 'bold'}}>Home</NavLink>
+                <NavLink to="/yourAppointment" style={{textDecoration:'none', color: 'white', fontWeight: 'bold'}}><Button color="inherit">Appointment</Button></NavLink>
+                <NavLink to="/dashboard" style={{textDecoration:'none', color: 'white', fontWeight: 'bold'}}>Dashboard</NavLink>
+                {user?.email ? <NavLink to='/login' style={{textDecoration:'none', color: 'white', fontWeight: 'bold'}}><Button color="inherit" onClick={logOutProces} >LogOut</Button></NavLink> : <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" >LogIn</Button></NavLink>}
                 
             </Toolbar>
             </AppBar>

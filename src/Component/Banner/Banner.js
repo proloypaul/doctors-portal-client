@@ -7,7 +7,7 @@ import bannerBg from '../../images/chair.png'
 
 const bannerBgAdded = {
     background: `url(${bannerBg})`,
-    backgroundColor: 'rgba(156, 226, 197 , 0.7)',
+    backgroundColor: 'rgb(43, 69, 80, 0.5)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: "cover",
     backgroundBlendMode: 'darken, luminosity',   
@@ -44,7 +44,7 @@ const Banner = () => {
             <Box>
                 <Container sx={{mt:-10}}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} md={4} sx={{ padding:'20px 10px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
+                        <Grid item xs={12} md={4} sx={{ padding:'20px 5px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
                             <Typography variant="p" component="div" sx={{fontSize: 50}}><i  className="far fa-clock"></i></Typography>
                             <Typography variant="p" component="div" sx={{marginLeft: '10px'}}>
                                 <Typography variant="h6" component="div">
@@ -55,7 +55,7 @@ const Banner = () => {
                                 </Typography>
                             </Typography>
                         </Grid>
-                        <Grid item xs={12} md={4} sx={{ padding:'20px 10px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
+                        <Grid item xs={12} md={4} sx={{ padding:'20px 5px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
                             <Typography variant="p" component="div" sx={{fontSize: 50}}><i className="fas fa-map-marker-alt"></i></Typography>
                             <Typography variant="p" component="div" sx={{marginLeft: '10px'}}>
                                 <Typography variant="h6" component="div">
@@ -66,7 +66,7 @@ const Banner = () => {
                                 </Typography>
                             </Typography>
                         </Grid>
-                        <Grid item xs={12} md={4} sx={{ padding:'20px 10px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
+                        <Grid item xs={12} md={4} sx={{ padding:'20px 5px', backgroundColor: '#49F4CE', color:'white', display: 'flex', justifyContent: 'space-around', border:0, borderRadius: '5px'}}>
                             <Typography variant="p" component="div" sx={{fontSize: 50}}><i className="fas fa-phone-alt"></i></Typography>
                             <Typography variant="p" component="div" sx={{marginLeft: '10px'}}>
                                 <Typography variant="h6" component="div">

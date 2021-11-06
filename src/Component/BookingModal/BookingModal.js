@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Button, TextField, Typography } from '@mui/material';
 import Input from '@mui/material/Input';
-import UseFirebase from '../../Hooks/UseFirebase';
+import useAuth from '../../Context/useAuth';
 
 
 const style = {
@@ -20,7 +20,7 @@ const style = {
   };
 
 const BookingModal = ({handleClose, open, sendBookingDtl}) => {
-    const {user} = UseFirebase()
+    const {user} = useAuth()
     const ariaLabel = { 'aria-label': 'description' };
     return (
         <Modal

@@ -2,11 +2,11 @@ import { Button, Container,  TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import UseFirebase from '../../../Hooks/UseFirebase';
+import useAuth from '../../../Context/useAuth';
 import Header from '../../Header/Header';
 
 const Register = () => {
-    const {registerWithEmailAndPassword, error, user} = UseFirebase()
+    const {registerWithEmailAndPassword, error, user} = useAuth()
     const [registerData, setRegisterData] = useState({})
     const history = useHistory()
     const collectUserData = event => {

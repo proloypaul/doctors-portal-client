@@ -2,12 +2,12 @@ import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import UseFirebase from '../../Hooks/UseFirebase';
+import useAuth from '../../Context/useAuth';
 import loginImg from '../../images/login.png';
 import Header from '../Header/Header';
 
 const Login = () => {
-    const {signInWithGoogle, loginEmailAndPassword, error} = UseFirebase()
+    const {signInWithGoogle, loginEmailAndPassword, error} = useAuth()
     const [loginData, setLoginData] = useState({})
     const history = useHistory()
     const location = useLocation()
