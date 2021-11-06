@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import Dashboard from './Component/Dashboard/Dashboard';
 import Home from './Component/Home/Home';
 import Login from './Component/Login/Login';
 import Register from './Component/Login/Register/Register';
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register></Register>
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard></Dashboard>
           </Route>
         </Switch>
       </Router>

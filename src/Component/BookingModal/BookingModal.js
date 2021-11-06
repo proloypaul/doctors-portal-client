@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Button, TextField, Typography } from '@mui/material';
 import Input from '@mui/material/Input';
+import UseFirebase from '../../Hooks/UseFirebase';
+
 
 const style = {
     position: 'absolute',
@@ -18,6 +20,7 @@ const style = {
   };
 
 const BookingModal = ({handleClose, open, sendBookingDtl}) => {
+    const {user} = UseFirebase()
     const ariaLabel = { 'aria-label': 'description' };
     return (
         <Modal
@@ -42,13 +45,13 @@ const BookingModal = ({handleClose, open, sendBookingDtl}) => {
                 
             />
             <Typography id="modal-modal-title" variant="h6" component="div">
-                <Input placeholder="Your Name" inputProps={ariaLabel} sx={{width:"80%"}} />
+                <Input defaultValue={user.displayName} inputProps={ariaLabel} sx={{width:"80%"}} />
+            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="div">
+                <Input defaultValue={user.email} inputProps={ariaLabel} sx={{width:"80%"}} />
             </Typography>
             <Typography id="modal-modal-title" variant="h6" component="div">
                 <Input placeholder="Phone" inputProps={ariaLabel} sx={{width:"80%"}}/>
-            </Typography>
-            <Typography id="modal-modal-title" variant="h6" component="div">
-                <Input placeholder="Email" inputProps={ariaLabel} sx={{width:"80%"}} />
             </Typography>
             <Typography id="modal-modal-title" variant="h6" component="div">
                 <Input placeholder="date" inputProps={ariaLabel} sx={{width:"80%"}}/>

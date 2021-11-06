@@ -31,6 +31,7 @@ const Header = () => {
                 </Typography>
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/yourAppointment" sx={{textDecoration: 'none', color: "white"}}><Button color="inherit">Appointment</Button></NavLink>
+                <NavLink to="/dashboard">Dashboard</NavLink>
                 {user?.email ? <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" onClick={logOutProces} >LogOut</Button></NavLink> : <NavLink to='/login' sx={{textDecoration: 'none', color: "white"}}><Button color="inherit" >LogIn</Button></NavLink>}
                 
             </Toolbar>

@@ -1,7 +1,7 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import UseFirebase from '../../Hooks/UseFirebase';
 import loginImg from '../../images/login.png';
 import Header from '../Header/Header';
@@ -9,6 +9,8 @@ import Header from '../Header/Header';
 const Login = () => {
     const {signInWithGoogle, loginEmailAndPassword, error} = UseFirebase()
     const [loginData, setLoginData] = useState({})
+    const history = useHistory()
+    const location = useLocation()
     const handleOnChange = event => {
         const filed = event.target.name
         const value = event.target.value 
@@ -19,7 +21,7 @@ const Login = () => {
     }
     const handleLogin = event => {
         event.preventDefault()
-        loginEmailAndPassword(loginData.email, loginData.password)
+        loginEmailAndPassword(loginData.email, loginData.password, history, location)
         // alert("login btn working")
         // console.log(loginData)
     }

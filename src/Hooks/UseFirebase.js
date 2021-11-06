@@ -1,4 +1,4 @@
-import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {useEffect, useState} from 'react';
 import initialization from "../Component/Firebase/firebase.init";
 
@@ -43,11 +43,24 @@ const UseFirebase = () => {
 
     // register with email and password
 
-    const registerWithEmailAndPassword = (email, password) => {
+    const registerWithEmailAndPassword = (email, password, name, history) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((result) => {
-            const user = result.user 
-            console.log(user)
+            // const user = result.user 
+            // console.log(user)
+            setError('')
+            const newUser = {email, displayName : name}
+            setUser(newUser)
+            updateProfile(auth.currentUser, {
+                displayName:name 
+              }).then(() => {
+                // Profile updated!
+                // ...
+              }).catch((error) => {
+                // An error occurred
+                // ...
+              });
+            history.replace('/')
         })
         .catch((error) => {
             setError(error.message)
@@ -56,11 +69,14 @@ const UseFirebase = () => {
     
 
     // login with email and password 
-    const loginEmailAndPassword = (email, password) => {
+    const loginEmailAndPassword = (email, password, history, location) => {
         signInWithEmailAndPassword(auth, email, password)
         .then((result) => {
            const user = result.user 
+           const destination = location?.state?.from || '/';
+           history.replace(destination)
            setUser(user) 
+           setError('')
         })
         .catch((error) => {
             setError(error.message)

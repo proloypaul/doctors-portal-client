@@ -1,14 +1,14 @@
 import { Button, Container,  TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import userEvent from '@testing-library/user-event';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import UseFirebase from '../../../Hooks/UseFirebase';
 import Header from '../../Header/Header';
 
 const Register = () => {
     const {registerWithEmailAndPassword, error, user} = UseFirebase()
     const [registerData, setRegisterData] = useState({})
+    const history = useHistory()
     const collectUserData = event => {
         const field = event.target.name; 
         const value = event.target.value;
@@ -20,7 +20,8 @@ const Register = () => {
         event.preventDefault()
         // console.log(registerData)
         if(registerData.password === registerData.retypePassword){
-            registerWithEmailAndPassword(registerData.email, registerData.password)
+            registerWithEmailAndPassword(registerData.email, registerData.password, registerData.name, history)
+            event.target.reset()
             alert("account create successfully!")
         }else{
             alert("password and retype password don't match. Please try again")
