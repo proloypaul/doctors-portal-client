@@ -80,7 +80,7 @@ const AvailableAppointment = ({date}) => {
                                     </Typography>
                                     
                                     
-                                    <BookingModal handleClose={handleClose} open={open} sendBookingDtl={time}></BookingModal>
+                                    <BookingModal handleClose={handleClose} open={open} sendBookingDtl={time} date={date.toDateString()}></BookingModal>
                                 </CardContent>
                             </Card>
                     </Paper>

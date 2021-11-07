@@ -67,7 +67,7 @@ const Login = () => {
                                         <Typography>
                                             You are new here click to <Link to="/register"><Button variant="contained">Register</Button></Link>
                                         </Typography>
-                                        <Button variant="contained" onClick={signInWithGoogle}>Google SignIn</Button>
+                                        <Button variant="contained" onClick={() => signInWithGoogle(history, location)}>Google SignIn</Button>
                                 </form>
                                 </Grid>
                             </Grid>

@@ -1,8 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { Button, TextField, Typography } from '@mui/material';
-import Input from '@mui/material/Input';
+import { Button, TextField, Typography, FormGroup  } from '@mui/material';
 import useAuth from '../../Context/useAuth';
 
 
@@ -19,9 +18,15 @@ const style = {
     p: 4,
   };
 
-const BookingModal = ({handleClose, open, sendBookingDtl}) => {
-    const {user} = useAuth()
-    const ariaLabel = { 'aria-label': 'description' };
+const BookingModal = ({handleClose, open, sendBookingDtl, date}) => {
+    const {user} = useAuth()  
+
+
+    const handleAppointmentData = event => {
+        alert("wow")
+        handleClose()
+        event.preventDefault();
+    }
     return (
         <Modal
             open={open}
@@ -35,30 +40,52 @@ const BookingModal = ({handleClose, open, sendBookingDtl}) => {
             noValidate
             autoComplete="off"
             >
-            <Typography variant="h6" component="div" sx={{textAlign: 'center'}}>
-                {sendBookingDtl.name}
-            </Typography>
-            <TextField
-                id="outlined-name"
-               value={sendBookingDtl.time}
-               sx={{width:"80%"}}
-                
-            />
-            <Typography id="modal-modal-title" variant="h6" component="div">
-                <Input defaultValue={user.displayName} inputProps={ariaLabel} sx={{width:"80%"}} />
-            </Typography>
-            <Typography id="modal-modal-title" variant="h6" component="div">
-                <Input defaultValue={user.email} inputProps={ariaLabel} sx={{width:"80%"}} />
-            </Typography>
-            <Typography id="modal-modal-title" variant="h6" component="div">
-                <Input placeholder="Phone" inputProps={ariaLabel} sx={{width:"80%"}}/>
-            </Typography>
-            <Typography id="modal-modal-title" variant="h6" component="div">
-                <Input placeholder="date" inputProps={ariaLabel} sx={{width:"80%"}}/>
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2, textAlign:"center" }}>
-               <Button variant="contained">Submit</Button>
-            </Typography>
+                <Typography variant="h6" component="div" sx={{textAlign: 'center'}}>
+                    {sendBookingDtl.name}
+                </Typography>
+                <form onSubmit={handleAppointmentData}>
+                    
+                    <TextField
+                    disabled
+                    id="outlined-name"
+                    value={sendBookingDtl.time}
+                    sx={{width:"100%"}}  
+                    />
+                    <TextField
+                        id="outlined-password-input"
+                        defaultValue={user.displayName}
+                        type="text"
+                        name="name"
+                        autoComplete="current-password"
+                        style={{width:'100%', margin:"10px 0"}}
+                    />
+                    <TextField
+                        id="outlined-password-input"
+                        defaultValue={user.email}
+                        type="email"
+                        name="password"
+                        autoComplete="current-password"
+                        style={{width:'100%'}}
+                    />
+                    <TextField
+                        id="outlined-password-input"
+                        label="Phone"
+                        type="number"
+                        name="phone"
+                        autoComplete="current-password"
+                        style={{width:'100%', margin:"10px 0"}}
+                    />
+                    <TextField
+                        disabled
+                        id="outlined-name"
+                    value={date}
+                    sx={{width:"100%"}}  
+                    />
+                    <Button variant="contained" type="submit">Submit</Button>
+                    <Typography sx={{ mt: 2, textAlign:"center" }}>
+                        
+                    </Typography>
+                </form>
             </Box>
         </Modal>
     );
