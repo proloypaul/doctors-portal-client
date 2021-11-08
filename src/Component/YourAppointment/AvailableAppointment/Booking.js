@@ -39,7 +39,12 @@ const Booking = (props) => {
                     </Grid>
                 </Grid>
             </Container>
-            <BookingModal handleClose={handleClose} open={open} sendBookingDtl={props.time} date={props.date.toDateString()}></BookingModal>
+            <BookingModal
+            handleClose={handleClose} 
+            open={open} sendBookingDtl={props.time} 
+            date={props.date.toDateString()} 
+            setBookingSuccess={props.setBookingSuccess}
+            ></BookingModal>
         </div>
     );
 };

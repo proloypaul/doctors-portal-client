@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Button, TextField, Typography, FormGroup  } from '@mui/material';
@@ -18,15 +18,48 @@ const style = {
     p: 4,
   };
 
-const BookingModal = ({handleClose, open, sendBookingDtl, date}) => {
+const BookingModal = ({handleClose, open, sendBookingDtl, date, setBookingSuccess}) => {
     const {user} = useAuth()  
-
+    const {name, time} = sendBookingDtl
+    const initialData = {patientName: user.displayName, email: user.email, phone: '' }
+    const [appointmentData, setAppointmentData] = useState(initialData)
+    
+    const collectData = event => {
+        const field = event.target.name
+        const value = event.target.value 
+        const allData = {...appointmentData}
+        allData[field] = value;
+        setAppointmentData(allData)
+    } 
 
     const handleAppointmentData = event => {
-        event.preventDefault();
-        alert("wow")
-        handleClose()
+        // alert("wow")
+        const allAppointmentData = {
+            ...appointmentData,
+            time,
+            serviceName: name,
+            date       //date: date.toLocaleDateString()
+        }
+        console.log(allAppointmentData)
+        const url = `http://localhost:3800/appointmentorders`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(allAppointmentData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId > 0){
+                    setBookingSuccess(true)
+                    handleClose()
+                }
+                handleClose()
+            })
+     
         
+        handleClose()
     }
     return (
         <Modal
@@ -42,31 +75,34 @@ const BookingModal = ({handleClose, open, sendBookingDtl, date}) => {
             autoComplete="off"
             >
                 <Typography variant="h6" component="div" sx={{textAlign: 'center'}}>
-                    {sendBookingDtl.name}
+                    {name}
                 </Typography>
-                <form onSubmit={handleAppointmentData}>
+                <FormGroup>
                     
                     <TextField
                     disabled
                     id="outlined-name"
-                    value={sendBookingDtl.time}
-                    sx={{width:"100%"}}  
+                    value={time}
+                    sx={{width:"100%"}} 
+                    onBlur={collectData} 
                     />
                     <TextField
                         id="outlined-password-input"
                         defaultValue={user.displayName}
                         type="text"
-                        name="name"
+                        name="patientName"
                         autoComplete="current-password"
                         style={{width:'100%', margin:"10px 0"}}
+                        onBlur={collectData}
                     />
                     <TextField
                         id="outlined-password-input"
                         defaultValue={user.email}
                         type="email"
-                        name="password"
+                        name="email"
                         autoComplete="current-password"
                         style={{width:'100%'}}
+                        onBlur={collectData}
                     />
                     <TextField
                         id="outlined-password-input"
@@ -75,18 +111,19 @@ const BookingModal = ({handleClose, open, sendBookingDtl, date}) => {
                         name="phone"
                         autoComplete="current-password"
                         style={{width:'100%', margin:"10px 0"}}
+                        onBlur={collectData}
                     />
                     <TextField
                         disabled
                         id="outlined-name"
-                    value={date}
-                    sx={{width:"100%"}}  
+                        value={date}
+                        sx={{width:"100%"}}
+                        onBlur={collectData}  
                     />
-                    <Button variant="contained" type="submit">Submit</Button>
                     <Typography sx={{ mt: 2, textAlign:"center" }}>
-                        
+                        <Button variant="contained" onClick={handleAppointmentData}>Submit</Button>
                     </Typography>
-                </form>
+                </FormGroup>
             </Box>
         </Modal>
     );

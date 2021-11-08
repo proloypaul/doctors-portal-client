@@ -16,7 +16,7 @@
 // import Toolbar from '@mui/material/Toolbar';
 // import Typography from '@mui/material/Typography';
 
-// // const drawerWidth = 240;
+// const drawerWidth = 240;
 
 // function Dashboard(props) {
 //   const { window } = props;
@@ -34,7 +34,7 @@
 //         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
 //           <ListItem button key={text}>
 //             <ListItemIcon>
-//               {index % 2 === 0 ? <InboxIcon /> : <MailIcon/>}
+//               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
 //             </ListItemIcon>
 //             <ListItemText primary={text} />
 //           </ListItem>
