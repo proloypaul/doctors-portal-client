@@ -23,9 +23,10 @@ const BookingModal = ({handleClose, open, sendBookingDtl, date}) => {
 
 
     const handleAppointmentData = event => {
+        event.preventDefault();
         alert("wow")
         handleClose()
-        event.preventDefault();
+        
     }
     return (
         <Modal
