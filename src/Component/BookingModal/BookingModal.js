@@ -38,7 +38,7 @@ const BookingModal = ({handleClose, open, sendBookingDtl, date, setBookingSucces
             ...appointmentData,
             time,
             serviceName: name,
-            date       //date: date.toLocaleDateString()
+            date: new Date(date).toLocaleDateString()      //date: date.toLocaleDateString()
         }
         console.log(allAppointmentData)
         const url = `http://localhost:3800/appointmentorders`;

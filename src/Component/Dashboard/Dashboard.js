@@ -1,3 +1,79 @@
+import { Grid } from '@mui/material';
+import { Box } from '@mui/system';
+import React from 'react';
+import {
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
+import Header from '../Header/Header';
+import YourAppointment from '../YourAppointment/YourAppointment';
+import AddDoctor from './AddDoctor';
+import DashboardHome from './DashboardHome';
+import MakeAdmin from './MakeAdmin';
+
+const Dashboard = () => {
+  const { path, url } = useRouteMatch();
+  return (
+    <>
+    <Box>
+      <Header></Header>
+      <Grid container spacing={2}>
+        <Grid item sm={2} md={2}>
+          <h1>Dashboard</h1>
+          <ul>
+            <li>
+              <Link to={`${url}/appointment`}>Appointment</Link>
+            </li>
+            <li>
+              <Link to={`${url}`}>Dashboard</Link>
+            </li>
+            <li>
+              <Link to={`${url}/makeAdmin`}>Make Admin</Link>
+            </li>
+            <li>
+              <Link to={`${url}/addDoctor`}>Add Doctor</Link>
+            </li>
+          </ul>
+        </Grid>
+        <Grid item sm={10} md={10}>
+          <h1>Appointment</h1>
+          <Switch>
+            <Route exact path={path}>
+              <DashboardHome></DashboardHome>
+            </Route>
+            <Route path={`${path}/makeAdmin`}>
+              <MakeAdmin></MakeAdmin>
+            </Route>
+            <Route path={`${path}/addDoctor`}>
+              <AddDoctor></AddDoctor>
+            </Route>
+            <Route path={`${path}/appointment`}>
+              <YourAppointment></YourAppointment>
+            </Route>
+          </Switch>
+        </Grid>
+      </Grid>
+    </Box>
+     
+    </>
+  );
+};
+
+export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
 // import * as React from 'react';
 // import PropTypes from 'prop-types';
 // import AppBar from '@mui/material/AppBar';
@@ -159,3 +235,4 @@
 // };
 
 // export default Dashboard;
+
