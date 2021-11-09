@@ -10,12 +10,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const LogerAppointment = ({date}) => {
-    const {user} = useAuth()
+    const {user, token} = useAuth()
     const [logerOrder, setLogerOrder] = useState([])
     
     useEffect(() => {
         const url = `http://localhost:3800/appointmentorders?email=${user.email}&date=${date}`;
-        fetch(url)
+        fetch(url, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setLogerOrder(data)

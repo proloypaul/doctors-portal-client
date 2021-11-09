@@ -1,4 +1,4 @@
-import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, getIdToken } from "firebase/auth";
 import {useEffect, useState} from 'react';
 import initialization from "../Component/Firebase/firebase.init";
 
@@ -6,6 +6,8 @@ initialization()
 const UseFirebase = () => {
     const [user, setUser] = useState([])
     const [error, setError] = useState('')
+    const [admin, setAdmin] = useState(false)
+    const [token, setToken] = useState('')
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth()
     
@@ -32,6 +34,11 @@ const UseFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
               setUser(user)
+              getIdToken(user)
+              .then(idToken => {
+                // console.log(idToken)
+                setToken(idToken)
+              })
             } else {
               // User is signed out
             }
@@ -105,9 +112,21 @@ const UseFirebase = () => {
       })
         .then()
     }
+
+    // find admin 
+    useEffect(() => {
+      const url = `http://localhost:3800/users/${user.email}`
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          setAdmin(data.admin)
+        })
+    }, [user.email])
     return{
         user,
         error,
+        admin,
+        token,
         signInWithGoogle,
         logOutProces,
         loginEmailAndPassword,

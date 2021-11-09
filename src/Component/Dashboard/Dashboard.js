@@ -12,11 +12,13 @@ import YourAppointment from '../YourAppointment/YourAppointment';
 import AddDoctor from './AddDoctor';
 import DashboardHome from './DashboardHome';
 import MakeAdmin from './MakeAdmin';
+import useAuth from '../../Context/useAuth';
+import AdminRoute from '../../Context/AdminRoute';
 
 const Dashboard = () => {
   const { path, url } = useRouteMatch();
+  const {admin} = useAuth()
   return (
-    <>
     <Box>
       <Header></Header>
       <Grid container spacing={2}>
@@ -29,12 +31,14 @@ const Dashboard = () => {
             <li>
               <Link to={`${url}`}>Dashboard</Link>
             </li>
-            <li>
+            {admin && <Box>
+              <li>
               <Link to={`${url}/makeAdmin`}>Make Admin</Link>
-            </li>
-            <li>
-              <Link to={`${url}/addDoctor`}>Add Doctor</Link>
-            </li>
+              </li>
+              <li>
+                <Link to={`${url}/addDoctor`}>Add Doctor</Link>
+              </li>
+              </Box>}
           </ul>
         </Grid>
         <Grid item sm={10} md={10}>
@@ -43,12 +47,12 @@ const Dashboard = () => {
             <Route exact path={path}>
               <DashboardHome></DashboardHome>
             </Route>
-            <Route path={`${path}/makeAdmin`}>
+            <AdminRoute path={`${path}/makeAdmin`}>
               <MakeAdmin></MakeAdmin>
-            </Route>
-            <Route path={`${path}/addDoctor`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/addDoctor`}>
               <AddDoctor></AddDoctor>
-            </Route>
+            </AdminRoute>
             <Route path={`${path}/appointment`}>
               <YourAppointment></YourAppointment>
             </Route>
@@ -56,8 +60,6 @@ const Dashboard = () => {
         </Grid>
       </Grid>
     </Box>
-     
-    </>
   );
 };
 
