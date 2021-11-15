@@ -14,6 +14,7 @@ import DashboardHome from './DashboardHome';
 import MakeAdmin from './MakeAdmin';
 import useAuth from '../../Context/useAuth';
 import AdminRoute from '../../Context/AdminRoute';
+import Payment from './Payment/Payment';
 
 const Dashboard = () => {
   const { path, url } = useRouteMatch();
@@ -49,6 +50,9 @@ const Dashboard = () => {
             </Route>
             <AdminRoute path={`${path}/makeAdmin`}>
               <MakeAdmin></MakeAdmin>
+            </AdminRoute>
+            <AdminRoute path={`${path}/payment/:appointmentId`}>
+              <Payment></Payment>
             </AdminRoute>
             <AdminRoute path={`${path}/addDoctor`}>
               <AddDoctor></AddDoctor>

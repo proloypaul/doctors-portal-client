@@ -43,7 +43,7 @@ const UseFirebase = () => {
               // User is signed out
             }
           });
-    }, []) 
+    }, [auth]) 
 
     // logOut process 
     const logOutProces = () => {

@@ -12,36 +12,42 @@ const AvailableAppointment = ({date}) => {
             id: 1,
             name: "Teeth Orthodontics",
             time: "800Am-900Am",
+            price: 25,
             space: 10
         }, 
         {
             id: 2,
             name: "Cosmetic Dentistry",
             time: "10:05Am-11:30Am",
+            price: 29,
             space: 10
         },
         {
             id: 3,
             name: "Teeth Cleaning",
             time: "500Am-6:30Am",
+            price: 38,
             space: 10
         },
         {
             id: 4,
             name: "Cavity Protection",
             time: "700Am-8:30Am",
+            price: 28,
             space: 10
         },
         {
             id: 5,
             name: "Teeth Orthodontics",
             time: "800Am-900Am",
+            price: 34,
             space: 10
         },
         {
             id: 6,
             name: "Teeth Orthodontics",
             time: "800Am-900Am",
+            price: 35,
             space: 10
         }
     ]

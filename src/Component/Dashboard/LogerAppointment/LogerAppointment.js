@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
 const LogerAppointment = ({date}) => {
     const {user, token} = useAuth()
@@ -57,8 +58,8 @@ const LogerAppointment = ({date}) => {
                 <TableRow>
                     <StyledTableCell>Name</StyledTableCell>
                     <StyledTableCell align="right">Time</StyledTableCell>
-                    <StyledTableCell align="right">Phone</StyledTableCell>
                     <StyledTableCell align="right">ServiceName</StyledTableCell>
+                    <StyledTableCell align="right">Payment</StyledTableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
@@ -66,8 +67,8 @@ const LogerAppointment = ({date}) => {
                     <StyledTableRow key={row._id}>
                     <StyledTableCell align="right">{row.patientName}</StyledTableCell>
                     <StyledTableCell align="right">{row.time}</StyledTableCell>
-                    <StyledTableCell align="right">{row.phone}</StyledTableCell>
                     <StyledTableCell align="right">{row.serviceName}</StyledTableCell>
+                    <StyledTableCell align="right">{row.payment ? 'paid' : <Link to={`dashboard/payment/${row._id}`}><button>Pay</button></Link>}</StyledTableCell>
                     </StyledTableRow>
                 ))}
                 </TableBody>
